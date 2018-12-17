@@ -1,6 +1,6 @@
 <?php
 require('connexion.php');
-
+error_reporting(0);
 
 echo <<<MON_HTML
 <!DOCTYPE html>
@@ -38,11 +38,12 @@ MON_HTML;
 if(is_null($_POST) || $_POST["recherche"]==""){
     population();
 }
-if(!is_null($_POST["recherche"]) && $_POST["recherche"]!=""){
+if(!is_null($_POST["recherche"]) && $_POST["recherche"]!==""){
     $appliBD=new Connexion;
     $ids=$appliBD->search_personne($_POST["recherche"]);
     echo '
         <table class="photo_home">
+        
     ';
     $j=1;
     foreach($ids as $i){
@@ -53,15 +54,15 @@ if(!is_null($_POST["recherche"]) && $_POST["recherche"]!=""){
             echo'<tr>';
         }
         echo '
-                <form action="profil.php" method="post">
+                    <form action="profil.php" method="post">
                     <td class="tdhome">
                         <div class="divInvisib">
-                            <input type="hidden" name="id" value="'.$i["Id"].'">
-                            <input type="image" src='.$lien.' class="imgmerdique">
+                            <input type="hidden" name="id" value="'.$i["Id"].'"></input>
+                            <input type="image" src='.$lien.' class="imgmerdique"></input>
                         </div>
                         <p class="np_home" name="id" value="'.$i["Id"].'">'.$nom.' '.$prenom.'</p>
                     </td>
-                <form>
+                    </form>
         ';
         if($i%3==0){
             echo'</tr>';
@@ -70,6 +71,9 @@ if(!is_null($_POST["recherche"]) && $_POST["recherche"]!=""){
     }
     echo '
     </table>
+    <div>
+        <a href="creer_compte.php">Créer un compte?</a>
+    </div>
     <div>
         <a href="creer_compte.php">Créer un compte?</a>
     </div>
@@ -98,7 +102,7 @@ function population(){
                     </div>
                     <p class="np_home" name="id" value="'.$i.'">'.$nom.' '.$prenom.'</p>
                 </td>
-            <form>
+            </form>
         ';
         if($i%3==0){
             echo'</tr>';
@@ -106,6 +110,10 @@ function population(){
     }
     echo'
     </table>
+    <div>
+        <a href="creer_compte.php">Créer un compte?</a>
+    </div>
+
     <div>
         <a href="creer_compte.php">Créer un compte?</a>
     </div>

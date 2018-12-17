@@ -1,6 +1,6 @@
 <?php
 require('connexion.php');
-
+error_reporting(0);
 $appliBD=new Connexion;
 
 echo <<<MON_HTML
@@ -64,24 +64,24 @@ echo <<<MON_HTML
         <h2>Goûts et couleurs</h2>
         <h3>(car on a pas tous les mêmes, y paraît...)</h3>
         <h3>Musique (pour ceux qui aiment la musique...)</h3>
-        <div class="gout"><input type="checkbox" class=musique id="style1" name="metal[]" value="Metal"><label for="style1">Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style2" name="metal[]" value="Heavy Metal"><label for="style2">Heavy Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style3" name="metal[]" value="Progressive Metal"><label for="style3">Progressive Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style4" name="metal[]" value="Death Metal"><label for="style4">Death Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style5" name="metal[]" value="Brutal Death Metal"><label for="style5">Brutal Death Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style6" name="metal[]" value="Metal Symphonique"><label for="style6">Métal Symphonique!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style7" name="metal[]" value="Green Metal"><label for="style7">Green Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style8" name="metal[]" value="Alternative Metal"><label for="style8">Alternative Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style1" name="metal[]" value="MÃ©tal"><label for="style1">Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style2" name="metal[]" value="Heavy MÃ©tal"><label for="style2">Heavy Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style3" name="metal[]" value="Progressive MÃ©tal"><label for="style3">Progressive Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style4" name="metal[]" value="Death MÃ©tal"><label for="style4">Death Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style5" name="metal[]" value="Brutal Death MÃ©tal"><label for="style5">Brutal Death Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style6" name="metal[]" value="MÃ©tal Symphonique"><label for="style6">Métal Symphonique!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style7" name="metal[]" value="Green MÃ©tal"><label for="style7">Green Métal!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=musique id="style8" name="metal[]" value="Alternative MÃ©tal"><label for="style8">Alternative Métal!!!!!!</label></div>
         <br>
         <h3>Hobbies (à ne pas confondre avec ceux aux pieds poilus...)</h3>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby1" name="jouer[]" value="Jouer a WoW"><label for="hobby1">Jouer à WoW!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby2" name="jouer[]" value="Jouer a ESO"><label for="hobby2">Jouer à ESO!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby3" name="jouer[]" value="Jouer a LoL"><label for="hobby3">Jouer à LoL!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby4" name="jouer[]" value="Jouer a Warhammer"><label for="hobby4">Jouer à Warhammer!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby5" name="jouer[]" value="Jouer a Guild Wars"><label for="hobby5">Jouer à Guild Wars!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby6" name="jouer[]" value="Jouer a Conan"><label for="hobby6">Jouer à Conan!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby7" name="jouer[]" value="Jouer a Rift"><label for="hobby7">Jouer à Rift!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=hobbies id="hobby8" name="jouer[]" value="Jouer a SWTOR"><label for="hobby8">Jouer à SWTOR!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby1" name="jouer[]" value="Jouer Ã WoW"><label for="hobby1">Jouer à WoW!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby2" name="jouer[]" value="Jouer Ã ESO"><label for="hobby2">Jouer à ESO!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby3" name="jouer[]" value="Jouer Ã LoL"><label for="hobby3">Jouer à LoL!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby4" name="jouer[]" value="Jouer Ã Warhammer"><label for="hobby4">Jouer à Warhammer!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby5" name="jouer[]" value="Jouer Ã Guild Wars"><label for="hobby5">Jouer à Guild Wars!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby6" name="jouer[]" value="Jouer Ã Conan"><label for="hobby6">Jouer à Conan!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby7" name="jouer[]" value="Jouer Ã Rift"><label for="hobby7">Jouer à Rift!!!!!!</label></div>
+        <div class="gout"><input type="checkbox" class=hobbies id="hobby8" name="jouer[]" value="Jouer Ã SWTOR"><label for="hobby8">Jouer à SWTOR!!!!!!</label></div>
         <br>
     </div>
     <div>

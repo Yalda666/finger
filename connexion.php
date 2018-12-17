@@ -27,6 +27,51 @@
             }
         }
 
+        function inverseDate($naissance){
+            $mot=str_split($naissance);
+            $res=$mot[8].$mot[9];
+            switch($mot[5].$mot[6]){
+                case "01":
+                    $res=$res." Janvier ";
+                    break;
+                case "02":
+                    $res=$res." Février ";
+                    break;
+                case "03":
+                    $res=$res." Mars ";
+                    break;
+                case "04":
+                    $res=$res." Avril ";
+                    break;
+                case "05":
+                    $res=$res." Mai ";
+                    break;
+                case "06":
+                    $res=$res." Juin ";
+                    break;
+                case "07":
+                    $res=$res." Juillet ";
+                    break;
+                case "08":
+                    $res=$res." Août ";
+                    break;
+                case "09":
+                    $res=$res." Septembre ";
+                    break;
+                case "10":
+                    $res=$res." Octobre ";
+                    break;
+                case "11":
+                    $res=$res." Novembre ";
+                    break;
+                case "12":
+                    $res=$res." Décembre ";
+                    break;
+            }
+            $res=$res.$mot[0].$mot[1].$mot[2].$mot[3];
+            return $res;
+        }
+
         function insertHobby($hobby){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -181,7 +226,7 @@
                     WHERE Personne_Id = :id"
                 );
                 $requete_prepare->execute(array("id" => $personneId));
-                $hobbies=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
+                $hobbies=$requete_prepare->fetchAll(PDO::FETCH_ASSOC);
                 return $hobbies;
             }
             catch(Exception $e){
@@ -200,7 +245,7 @@
                     WHERE Personne_Id = :id"
                 );
                 $requete_prepare->execute(array("id" => $personneId));
-                $musics=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
+                $musics=$requete_prepare->fetchAll(PDO::FETCH_ASSOC);
                 return $musics;
             }
             catch(Exception $e){
@@ -219,7 +264,7 @@
                     WHERE P1.Id = :id AND Relation_Id=P2.Id"
                 );
                 $requete_prepare->execute(array("id" => $personneId));
-                $relations=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
+                $relations=$requete_prepare->fetchAll(PDO::FETCH_ASSOC);
                 return $relations;
             }
             catch(Exception $e){
@@ -322,6 +367,24 @@
             }
         }
 
+        function getDate($id){
+            try{
+                $requete_prepare=$this->connexion->prepare(
+                    'SELECT Date_Naissance FROM Personne
+                    WHERE Id=:id'
+                );
+                $requete_prepare->execute(array("id" => $id));
+                $did=$requete_prepare->fetch(PDO::FETCH_ASSOC);
+                $date=trim($did["Date_Naissance"]);
+                return $date;
+            }
+            catch(Exception $e){
+                echo 'Erreur : '.$e->getMessage().'<br />';
+                echo 'N° : '.$e->getCode();
+                return false;
+            }
+        }
+
         function getCompteId(){
             try{
                 $requete_prepare1=$this->connexion->prepare(
@@ -382,6 +445,10 @@
                     "INSERT INTO RelationPersonne (Personne_Id,Relation_Id,Type) values (:id,:rel,:typ)"
                 );
                 $requete_prepare->execute(array("id" => $personneId1, "rel" => $personneId2, "typ" => $type));
+                $requete_prepare=$this->connexion->prepare(
+                    "INSERT INTO RelationPersonne (Personne_Id,Relation_Id,Type) values (:id,:rel,:typ)"
+                );
+                $requete_prepare->execute(array("id" => $personneId2, "rel" => $personneId1, "typ" => $type));
                 // echo "Bien inséré <br>";
             }
             catch(Exception $e){
