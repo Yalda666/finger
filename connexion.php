@@ -385,6 +385,24 @@
             }
         }
 
+        function getStatut($id){
+            try{
+                $requete_prepare=$this->connexion->prepare(
+                    'SELECT Statut_Couple FROM Personne
+                    WHERE Id=:id'
+                );
+                $requete_prepare->execute(array("id" => $id));
+                $nid=$requete_prepare->fetch(PDO::FETCH_ASSOC);
+                $nom_Id=trim($nid["Statut_Couple"]);
+                return $nom_Id;
+            }
+            catch(Exception $e){
+                echo 'Erreur : '.$e->getMessage().'<br />';
+                echo 'N° : '.$e->getCode();
+                return false;
+            }
+        }
+
         function getCompteId(){
             try{
                 $requete_prepare1=$this->connexion->prepare(

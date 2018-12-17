@@ -75,7 +75,15 @@ if(is_null($_POST["id"]) && is_null($_POST["nom"])){
         
     <div>
         <h2 id="stts">
-        AUTRE
+        <?php
+            if(!is_null($_POST["id"])){
+                $prenom= $appliBD->getPrenom($_POST["id"]);
+                echo '<td class="nm"><div>'.$prenom.'</div></td>';
+            }
+            else{
+                echo '<td class="nm"><div>'.$_POST["prenom"].'</div></td>';
+            }
+        ?>
         </h2>
     </div>
 
