@@ -5,8 +5,13 @@ $appliBD= new Connexion();
 if(is_null($_POST["id"]) && is_null($_POST["nom"])){
     $_POST["id"]=1;
 }
-
-// var_dump($_POST);
+if(!is_null($_POST["nom"])){
+    inscription();
+}
+else{
+    $id=$_POST["id"];
+}
+$nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +19,7 @@ if(is_null($_POST["id"]) && is_null($_POST["nom"])){
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Profil de: NOM</title>
+    <title>Profil de:<?= $nomcomplet ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
@@ -77,11 +82,11 @@ if(is_null($_POST["id"]) && is_null($_POST["nom"])){
         <h2 id="stts">
         <?php
             if(!is_null($_POST["id"])){
-                $prenom= $appliBD->getPrenom($_POST["id"]);
-                echo '<td class="nm"><div>'.$prenom.'</div></td>';
+                $etat= $appliBD->getStatut($_POST["id"]);
+                echo '<td class="nm"><div>'.$etat.'</div></td>';
             }
             else{
-                echo '<td class="nm"><div>'.$_POST["prenom"].'</div></td>';
+                echo '<td class="nm"><div>'.$_POST["etat"].'</div></td>';
             }
         ?>
         </h2>
@@ -186,26 +191,30 @@ if(is_null($_POST["id"]) && is_null($_POST["nom"])){
 
 
 
-if(!is_null($_POST["nom"])){
-    inscription();
-}
 
 function inscription(){
     $count=1;
     $appliBD=new Connexion;
     $appliBD->insertPersonne($_POST["nom"],$_POST["prenom"],$_POST["lien"],$_POST["naissance"],$_POST["etat"]);
     $newId=$appliBD->searchId($_POST["nom"]);
-    $id=$newId;
+    $newId2=$appliBD->searchId($_POST["prenom"]);
+    if($newId==$newId2){
+        $id=$newId;
+    }
+    else{
+        $id=$newId2;
+    }
+    
     if(!is_null($_POST["metal"])){
-        $appliBD->insertPersonneMusique($newId,$_POST["metal"]);
+        $appliBD->insertPersonneMusique($id,$_POST["metal"]);
     }
     if(!is_null($_POST["jouer"])){
-        $appliBD->insertPersonneHobbies($newId,$_POST["jouer"]);
+        $appliBD->insertPersonneHobbies($id,$_POST["jouer"]);
     }
     if(!is_null($_POST["relations"])){
         foreach($_POST["relations"] as $rel){
             if($rel!==""){
-                $appliBD->insertPersonneRelation($newId,$count,$rel);
+                $appliBD->insertPersonneRelation($id,$count,$rel);
             }
             $count++;
         }
