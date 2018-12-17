@@ -45,7 +45,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                     echo '<td rowspan="2" id="topho"><div class="divInvisib"><img class="imgmerdique" src="'.$_POST["lien"].'" alt="L" style="width:100%"></div></td>';
                 }
                 if(!is_null($_POST["id"])){
-                    echo var_dump($_POST["id"]);
+                    // echo var_dump($_POST["id"]);
                     $nom= $appliBD->getNom($_POST["id"]);
                     echo '<td class="nm"><div>'.$nom.'</div></td>';
                 }
