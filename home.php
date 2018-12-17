@@ -113,10 +113,6 @@ function population(){
     <div>
         <a href="creer_compte.php">Créer un compte?</a>
     </div>
-
-    <div>
-        <a href="creer_compte.php">Créer un compte?</a>
-    </div>
     ';  
 }
 

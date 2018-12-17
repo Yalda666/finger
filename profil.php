@@ -1,12 +1,12 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 require 'connexion.php';
 $appliBD= new Connexion();
-if(is_null($_POST["id"]) && is_null($_POST[nom])){
+if(is_null($_POST["id"]) && is_null($_POST["nom"])){
     $_POST["id"]=1;
 }
 
-var_dump($_POST);
+// var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ var_dump($_POST);
                     echo '<td rowspan="2" id="teda"><div>'.$appliBD->inverseDate($date).'</div></td>';
                 }
                 else{
-                    echo '<td rowspan="2" id="teda"><div>'.$_POST["naissance"].'</div></td>';
+                    echo '<td rowspan="2" id="teda"><div>'.$appliBD->inverseDate($_POST["naissance"]).'</div></td>';
                 }
                 
             ?>
@@ -96,7 +96,7 @@ var_dump($_POST);
                 else{
                     foreach ($_POST["metal"] as $music){
 
-                        echo '<li>'.$music.'</li>';
+                        echo '<li>'.$appliBD->getMusiquebyId($music).'</li>';
                     }
                 }
             ?>
@@ -122,7 +122,7 @@ var_dump($_POST);
                 else{
                     foreach ($_POST["jouer"] as $hobby){
 
-                        echo '<li>'.$hobby.'</li>';
+                        echo '<li>'.$appliBD->getHobbyById($hobby).'</li>';
                     }
                 }
             ?>

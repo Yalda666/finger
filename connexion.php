@@ -275,16 +275,16 @@
 
         }
 
-        function getHobbyId($type){
+        function getHobbyById($id){
             try{
-                $hobby_Id=0;
+                $hobby_Id=$id;
                 $requete_prepare=$this->connexion->prepare(
-                    'SELECT Id FROM Hobby
-                    WHERE Type=:hobby'
+                    'SELECT Type FROM Hobby
+                    WHERE Id=:hobby'
                 );
-                $requete_prepare->execute(array("hobby" => $type));
+                $requete_prepare->execute(array("hobby" => $hobby_Id));
                 $hid=$requete_prepare->fetch(PDO::FETCH_ASSOC);
-                $hobby_Id=trim($hid["Id"]);
+                $hobby_Id=trim($hid["Type"]);
                 return $hobby_Id;
             }
             catch(Exception $e){
@@ -294,16 +294,16 @@
             }
         }
 
-        function getMusiqueId($type){
+        function getMusiquebyId($id){
             try{
                 $musique_Id=0;
                 $requete_prepare=$this->connexion->prepare(
-                    'SELECT Id FROM Musique
-                    WHERE Type=:musique'
+                    'SELECT Type FROM Musique
+                    WHERE Id=:musique'
                 );
-                $requete_prepare->execute(array("musique" => $type));
+                $requete_prepare->execute(array("musique" => $id));
                 $mid=$requete_prepare->fetch(PDO::FETCH_ASSOC);
-                $musique_Id=trim($mid["Id"]);
+                $musique_Id=trim($mid["Type"]);
                 return $musique_Id;
             }
             catch(Exception $e){
@@ -404,11 +404,10 @@
         function insertPersonneHobbies($personneId,$hobbies){
             try{
                 foreach($hobbies as $hobby){
-                    $hobby_Id=$this->getHobbyId($hobby);;
                     $requete_prepare=$this->connexion->prepare(
                         "INSERT INTO RelationHobby (Personne_Id,Hobby_Id) values (:id,:hobby)"
                     );
-                    $requete_prepare->execute(array("id" => $personneId, "hobby" => $hobby_Id));
+                    $requete_prepare->execute(array("id" => $personneId, "hobby" => $hobby));
                     // echo "Bien inséré"  . $personneId . "avec" . $hobby_Id ."<br>";
                 }
             }
@@ -423,11 +422,10 @@
         function insertPersonneMusique($personneId,$musiques){
             try{
                 foreach($musiques as $music){
-                    $music_Id=$this->getMusiqueId($music);
                     $requete_prepare=$this->connexion->prepare(
                         "INSERT INTO RelationMusique (Personne_Id,Musique_Id) values (:id,:music)"
                     );
-                    $requete_prepare->execute(array("id" => $personneId, "music" => $music_Id));
+                    $requete_prepare->execute(array("id" => $personneId, "music" => $music));
                     // echo "Bien inséré" . $personneId . "avec" . $music_Id . "<br>";
                 }
             }
