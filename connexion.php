@@ -182,7 +182,7 @@
                 $pat='%'.$pattern.'%';
                 $this->connexion->prepare("SELECT * FROM Personne WHERE Nom like :pat or Prenom like :pat");
                 $resultat = $this->connexion->execute(array("pat"=>$pat));
-                var_dump($resultat);
+                // var_dump($resultat);
                 $resultat=$requete_prepare->fetch(PDO::FETCH_ASSOC);
                 // $requete_prepare=$this->connexion->prepare(
                 //     'SELECT * FROM Personne WHERE Nom LIKE :pat OR Prenom LIKE :pat'
