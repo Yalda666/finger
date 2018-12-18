@@ -1,9 +1,3 @@
-<?php
-require('connexion.php');
-error_reporting(0);
-$appliBD=new Connexion;
-
-echo <<<MON_HTML
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,8 +83,11 @@ echo <<<MON_HTML
         <h3>(pour ceux qui en ont de réelles...)</h3>
     
 
-MON_HTML;
 
+<?php
+require('connexion.php');
+error_reporting(0);
+$appliBD=new Connexion;
 population();
 function population(){
     $appliBD=new Connexion;

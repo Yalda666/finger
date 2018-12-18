@@ -74,9 +74,6 @@ if(!is_null($_POST["recherche"]) && $_POST["recherche"]!==""){
     <div>
         <a href="creer_compte.php">Créer un compte?</a>
     </div>
-    <div>
-        <a href="creer_compte.php">Créer un compte?</a>
-    </div>
     ';
 }
 

@@ -144,32 +144,56 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
     </div>
 
     <div>
-        <table id="sonic">
+        <table id="sonic" class="photo_home">
             <tr>
                 <?php
                 if(!is_null($_POST["id"])){
                     $relations=$appliBD->getRelationPersonne($_POST["id"]);
-                    foreach ($relations as $rel){
+                    $count=1;
+                    foreach($relations as $rel){
                         if(!is_null($rel)){
+                            if(($count-1)%3==0){
+                                echo'<tr>';
+                            }
                             $id=$appliBD->searchId($rel["Nom"]);
                             $lien=$appliBD->getImage($id);
-                            echo '<tr>';
-                            echo '<td><img class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($id).' '.$appliBD->getPrenom($id).'"></td>';
-                            echo '<td>'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</td>';
-                            echo '</tr>';
+                            echo '<form action="profil.php" method="post">';
+                            // echo '<td class="tdhome">';
+                            echo '<div class="divInvisib">';
+                            echo '<input type="hidden" name="id" value="'.$_POST["id"].'">';
+                            echo '<input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($id).' '.$appliBD->getPrenom($id).'">';
+                            echo '</div>';
+                            echo '<p class="np_home">'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</p>';
+                            echo '</td>';
+                            echo '</form>';
+                            if($count%3==0){
+                                echo'</tr>';
+                            }
                         }
+                        $count++;
                     }
                 }
                 else{
                     $count=1;
-                    foreach ($_POST["relations"] as $rel){
+                    foreach($_POST["relations"] as $rel){
                         if($rel!=""){
+                            if(($count-1)%3==0){
+                                echo'<tr>';
+                            }
                             $id=$appliBD->searchId($_POST["Nom"]);
                             $lien=$appliBD->getImage($count);
-                            echo '<tr>';
-                            echo '<td><img class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($count).' '.$appliBD->getPrenom($count).'"></td>';
-                            echo '<td>'.$appliBD->getNom($count).', '.$appliBD->getPrenom($count).' :    '.$rel.'</td>';
-                            echo '</tr>';
+                            echo '<form action="profil.php" method="post">';
+                            // echo '<td class="tdhome">';
+                            echo '<div class="divInvisib">';
+                            echo '<input type="hidden" name="id" value="'.$id.'">';
+                            echo '<input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($count).' '.$appliBD->getPrenom($count).'">';
+                            echo '</div>';
+                            echo '<p class="np_home">'.$appliBD->getNom($count).', '.$appliBD->getPrenom($count).' :    '.$rel.'</p>';
+                            echo '</td>';
+                            echo '</form>';
+                            if($count%3==0){
+                                echo'</tr>';
+                            }
                         }
                         $count++;
                     }
