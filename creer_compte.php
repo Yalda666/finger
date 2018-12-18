@@ -58,14 +58,23 @@
         <h2>Goûts et couleurs</h2>
         <h3>(car on a pas tous les mêmes, y paraît...)</h3>
         <h3>Musique (pour ceux qui aiment la musique...)</h3>
-        <div class="gout"><input type="checkbox" class=musique id="style1" name="metal[]" value="1"><label for="style1">Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style2" name="metal[]" value="8"><label for="style2">Heavy Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style3" name="metal[]" value="7"><label for="style3">Progressive Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style4" name="metal[]" value="4"><label for="style4">Death Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style5" name="metal[]" value="6"><label for="style5">Brutal Death Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style6" name="metal[]" value="5"><label for="style6">Métal Symphonique!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style7" name="metal[]" value="3"><label for="style7">Green Métal!!!!!!</label></div>
-        <div class="gout"><input type="checkbox" class=musique id="style8" name="metal[]" value="2"><label for="style8">Alternative Métal!!!!!!</label></div>
+        <?php
+            require('connexion.php');
+            $appliBD=new Connexion;
+            $musiques=$appliBD->selectAllMusics();
+            var_dump($musiques);
+            for($i=1;$i<count($musiques);$i++){
+                echo '<div class="gout"><input type="checkbox" class=musique id="style'.$i.'" name="metal[]" value='.$i.'><label for="style'.$i.'">'.$musiques[($i-1)]["Type"].'Métal!!!!!!</label></div>';
+            }
+        // <div class="gout"><input type="checkbox" class=musique id="style1" name="metal[]" value="1"><label for="style1">Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style2" name="metal[]" value="8"><label for="style2">Heavy Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style3" name="metal[]" value="7"><label for="style3">Progressive Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style4" name="metal[]" value="4"><label for="style4">Death Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style5" name="metal[]" value="6"><label for="style5">Brutal Death Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style6" name="metal[]" value="5"><label for="style6">Métal Symphonique!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style7" name="metal[]" value="3"><label for="style7">Green Métal!!!!!!</label></div>
+        // <div class="gout"><input type="checkbox" class=musique id="style8" name="metal[]" value="2"><label for="style8">Alternative Métal!!!!!!</label></div>
+        ?>
         <br>
         <h3>Hobbies (à ne pas confondre avec ceux aux pieds poilus...)</h3>
         <div class="gout"><input type="checkbox" class=hobbies id="hobby1" name="jouer[]" value="1"><label for="hobby1">Jouer à WoW!!!!!!</label></div>
@@ -86,7 +95,7 @@
 
 <?php
 require('connexion.php');
-error_reporting(0);
+// error_reporting(0);
 $appliBD=new Connexion;
 population();
 function population(){

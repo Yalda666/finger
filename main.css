@@ -5,46 +5,46 @@ body {
     background-repeat: no-repeat; 
     background-attachment: fixed; 
     margin:0px 0px 0px 0px;
- /*   font-family: 'Barrio';font-size: 22px;*/
-    color: #371300;
+   font-family: 'Barrio';font-size: 22px;
+    color: #389130;
 
 }
 div{
     border-radius: 50%;
     width:50%;
     text-align: center;
-    background-color: #EE3C2F;
+    background-color: #24541C;
     margin-left: 25%;
     padding-top:2em;
     padding-bottom:2em;
     border-style: solid;
-    border-color:#371300;
-    -webkit-box-shadow: 1px 6px 17px 10px rgba(100,20,0,0.73); 
-    box-shadow: 1px 6px 17px 10px rgba(100,20,0,0.73);
+    border-color:#389130;
+    -webkit-box-shadow: 1px 6px 17px 10px #153913; 
+    box-shadow: 1px 6px 17px 10px #153913;
     border-width: 4px;
 }
 h1 {
     font-size:300%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-align:center;
 }
 h2 {
     font-size:200%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-align:center;
     margin-bottom:20px;
 }
 h3 {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-align:center;
 }
 p {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-align:left;
     margin-left:0px;
@@ -52,7 +52,7 @@ p {
 }
 li {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-align:left;
     margin-left:0px;
@@ -60,19 +60,19 @@ li {
 }
 a:link {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
 a:visited {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
 a:hover {
     font-size:100%;
-    color:#371300;
+    color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
@@ -86,7 +86,7 @@ table {
 td {
     padding: 5%;
     font-size:100%;
-    color:#371300;
+    color:#389130;
     text-align:start;
     background-color:transparent;
     border-color:transparent;
@@ -98,7 +98,7 @@ td {
 /* Formatte le texte des noms et prénoms de la page d'accueil */
 p.np_home{
     border-width: 4px;
-    text-shadow: 0px 0px 10px #A4418B;
+    text-shadow: 0px 0px 10px #24541C;
     color: #ffffff;
     font-size:2em;
     font-weight: bolder;
@@ -164,14 +164,21 @@ td.tdhome {
     margin-right: auto;
 }
 
-/*Lien temporaire sur la page d'accueil*/
-#home{
-    font-size: 100px;
+#submit_chrch{
+    color: #389130;
+    background-color: #153913;
+    border-color: white;
+    font-family: 'Barrio';font-size: 22px;
 }
 
 #submit_creer{
     margin-left:42.5%;
     margin-right:auto;
+    color: #389130;
+    background-color: #153913;
+    border-color: white;
+    font-family: 'Barrio';font-size: 22px;
+    
 }
 
 /* Définit la forme des boutons des pages ainsi que leur taille */
@@ -183,7 +190,7 @@ button{
 
 :required
 {
-    background-color: rgb(253, 101, 0);
+    background-color: #58C550;
 }
 
 /* ----------------------- SEB -----------------------------------------*/
@@ -213,6 +220,11 @@ button{
     width: 200px;
     float: left;
 }
+#home{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 .flxbx{
     display: inline-flex;
 }
@@ -225,7 +237,7 @@ button{
 .imgmerdique{
     border-radius: 50%;
     border-style: solid;
-    border-color:#371300;
+    border-color:#389130;
     width:200px; 
     border-width: 4px;
 }
