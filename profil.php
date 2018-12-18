@@ -23,7 +23,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
-<!--   <link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'> -->
+  <link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'>
 </head>
 
 <body> 
@@ -45,7 +45,6 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                     echo '<td rowspan="2" id="topho"><div class="divInvisib"><img class="imgmerdique" src="'.$_POST["lien"].'" alt="L" style="width:100%"></div></td>';
                 }
                 if(!is_null($_POST["id"])){
-                    // echo var_dump($_POST["id"]);
                     $nom= $appliBD->getNom($_POST["id"]);
                     echo '<td class="nm"><div>'.$nom.'</div></td>';
                 }
@@ -144,7 +143,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
     </div>
 
     <div>
-        <table id="sonic" class="photo_home">
+        <table class="photo_profil">
             <tr>
                 <?php
                 if(!is_null($_POST["id"])){
@@ -158,12 +157,12 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                             $id=$appliBD->searchId($rel["Nom"]);
                             $lien=$appliBD->getImage($id);
                             echo '<form action="profil.php" method="post">';
-                            // echo '<td class="tdhome">';
+                            echo '<td class="tdprofil">';
                             echo '<div class="divInvisib">';
                             echo '<input type="hidden" name="id" value="'.$_POST["id"].'">';
                             echo '<input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($id).' '.$appliBD->getPrenom($id).'">';
                             echo '</div>';
-                            echo '<p class="np_home">'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</p>';
+                            echo '<p class="np_profil">'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</p>';
                             echo '</td>';
                             echo '</form>';
                             if($count%3==0){
@@ -183,7 +182,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                             $id=$appliBD->searchId($_POST["Nom"]);
                             $lien=$appliBD->getImage($count);
                             echo '<form action="profil.php" method="post">';
-                            // echo '<td class="tdhome">';
+                            echo '<td class="tdhome">';
                             echo '<div class="divInvisib">';
                             echo '<input type="hidden" name="id" value="'.$id.'">';
                             echo '<input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($count).' '.$appliBD->getPrenom($count).'">';

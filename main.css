@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat; 
     background-attachment: fixed; 
     margin:0px 0px 0px 0px;
-   font-family: 'Barrio';font-size: 22px;
+    font-family: 'Barrio';font-size: 22px;
     color: #389130;
 
 }
@@ -105,6 +105,15 @@ p.np_home{
     text-align: center;
 }
 
+p.np_profil{
+    border-width: 4px;
+    text-shadow: 0px 0px 10px #24541C;
+    color: #ffffff;
+    font-size:1em;
+    font-weight: bolder;
+    text-align: center;
+}
+
 /*Table pour les photos dans la page d'accueil*/
 table.photo_home {
     border-color:rgba(255, 255, 255, 0);
@@ -116,6 +125,17 @@ table.photo_home {
     justify-content:space-evenly;
     align-items:center;
 }
+
+/* table.photo_profil {
+    border-color:rgba(255, 255, 255, 0);
+    border-style:solid;
+    text-align:center;
+    width:70%;
+    line-height: 200%;
+    display:block;
+    justify-content:space-evenly;
+    align-items:unset;
+} */
 
 /* Table pour les inputs text des détails du profil */
 table.input_name {
@@ -130,6 +150,11 @@ table.input_name {
 }
 
 td.tdhome {
+    text-align:center;
+    align-items:center;
+}
+
+td.tdprofil {
     text-align:center;
     align-items:center;
 }
@@ -177,8 +202,8 @@ td.tdhome {
     color: #389130;
     background-color: #153913;
     border-color: white;
-    font-family: 'Barrio';font-size: 22px;
-    
+    font-family: 'Barrio';
+    font-size: 22px;
 }
 
 /* Définit la forme des boutons des pages ainsi que leur taille */
