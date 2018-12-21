@@ -120,7 +120,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
 
     <div class="flxbx">
         <h2><div class="divInvisib">
-            HOBBIES</div>
+            Hobbies</div>
         </h2>
         <div>
             <ul class="muse">
@@ -156,15 +156,17 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                             }
                             $id=$appliBD->searchId($rel["Nom"]);
                             $lien=$appliBD->getImage($id);
-                            echo '<form action="profil.php" method="post">';
-                            echo '<td class="tdprofil">';
-                            echo '<div class="divInvisib">';
-                            echo '<input type="hidden" name="id" value="'.$_POST["id"].'">';
-                            echo '<input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($id).' '.$appliBD->getPrenom($id).'">';
-                            echo '</div>';
-                            echo '<p class="np_profil">'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</p>';
-                            echo '</td>';
-                            echo '</form>';
+                            echo '
+                                <form action="profil.php" method="post">
+                                    <td class="tdprofil">
+                                        <div class="divInvisib">
+                                            <input type="hidden" name="id" value="'.$id.'">
+                                            <input type="image"  class="imgmerdique" src="'.$lien.'" alt="'.$appliBD->getNom($id).' '.$appliBD->getPrenom($id).'">
+                                        </div>
+                                        <p class="np_profil">'.$rel["Nom"].', '.$rel["Prenom"].' :    '.$rel["Type"].'</p>
+                                    </td>
+                                </form>
+                            ';
                             if($count%3==0){
                                 echo'</tr>';
                             }

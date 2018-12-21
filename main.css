@@ -126,7 +126,7 @@ table.photo_home {
     align-items:center;
 }
 
-/* table.photo_profil {
+table.photo_profil {
     border-color:rgba(255, 255, 255, 0);
     border-style:solid;
     text-align:center;
@@ -135,7 +135,8 @@ table.photo_home {
     display:block;
     justify-content:space-evenly;
     align-items:unset;
-} */
+    
+}
 
 /* Table pour les inputs text des détails du profil */
 table.input_name {
@@ -149,14 +150,17 @@ table.input_name {
     margin-top:0px;
 }
 
+/* Colonne pour les textes des images de home */
 td.tdhome {
     text-align:center;
     align-items:center;
 }
 
+/* Colonne pour les textes des images de profil */
 td.tdprofil {
     text-align:center;
     align-items:center;
+    vertical-align: text-bottom;
 }
 
 /*Text input de la page création de profil*/
