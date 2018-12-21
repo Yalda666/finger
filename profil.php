@@ -1,5 +1,4 @@
 <?php
-
 // Connexion à la base de données ↓↓↓
 error_reporting(0);
 require 'connexion.php';

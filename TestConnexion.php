@@ -52,7 +52,6 @@ $appliBD->insertMusique("Heavy Métal");*/
 // $bob=selectPersonneById("Ber");
 // var_dump($bob);
 // var_dump($appliBD->searchId("Lee Jones"));
-// var_dump(selectPersonneByNomPrenomLike("lap"));
 // var_dump($appliBD->getImage("1"));
 // var_dump(getPersonneHobby(1));
 

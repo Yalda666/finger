@@ -1,6 +1,10 @@
 <?php
+// Début de la classe Connexion
     class Connexion {
+// Déclaration de la variable privée connexion qui fait la relation avec la base de données
         private $connexion;
+
+// Constructeur de la classe qui initialise la connexion avec la base de données avec les paramètres interne à notre serveur phpmyadmin
         public function __construct() {
             try{
             
@@ -27,6 +31,7 @@
             }
         }
 
+// Fonction inverseDate qui formate la date de naissance sous un format plus intelligible et digérable pour nous Européens
         function inverseDate($naissance){
             $mot=str_split($naissance);
             $res=$mot[8].$mot[9];
@@ -72,6 +77,7 @@
             return $res;
         }
 
+// Fonction insertHobby qui insère un hobby dans la base de données
         function insertHobby($hobby){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -91,6 +97,7 @@
             }
         }
 
+// Fonction insertMusique qui insère un style de musique dans la base de données
         function insertMusique($music){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -110,6 +117,7 @@
             }
         }
 
+// Fonction insertPersonne qui insère une personne dans la base de données
         function insertPersonne($nom,$prenom,$url,$date,$statut){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -129,6 +137,7 @@
             }
         }
 
+// Fonction selectAllHobbies qui sélectionne la liste des hobbies dans la base de données
         function selectAllHobbies(){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -145,6 +154,7 @@
             }
         }
 
+// Fonction selectAllMusics qui sélectionne la liste des types de musique dans la base de données
         function selectAllMusics(){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -161,6 +171,7 @@
             }
         }
 
+// Fonction selectPersonneById qui sélectionne la personne dans la base de données qui a l'identifiant passée en paramètre et retourne tous ses attributs
         function selectPersonneById($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -177,29 +188,7 @@
             }
         }
 
-        function selectPersonneByNomPrenomLike($pattern){
-            try{
-                $pat='%'.$pattern.'%';
-                $this->connexion->prepare("SELECT * FROM Personne WHERE Nom like :pat or Prenom like :pat");
-                $resultat = $this->connexion->execute(array("pat"=>$pat));
-                // var_dump($resultat);
-                $resultat=$requete_prepare->fetch(PDO::FETCH_ASSOC);
-                // $requete_prepare=$this->connexion->prepare(
-                //     'SELECT * FROM Personne WHERE Nom LIKE :pat OR Prenom LIKE :pat'
-                // );
-                //:pat IN Nom OR :pat IN Prenom
-                // $requete_prepare->execute(array("pat" => "%".$pattern."%"));
-                // var_dump($requete_prepare);
-                // $resultat=$requete_prepare->fetch(PDO::FETCH_ASSOC);
-                return $resultat;
-            }
-            catch(Exception $e){
-                echo 'Erreur : '.$e->getMessage().'<br />';
-                echo 'N° : '.$e->getCode();
-                // return false;
-            }
-        }
-
+// Fonction searchId qui sélectionne l'identifiant dans la base de données qu'a la personne qui a le nom ou le prénom qui contient les lettres passées en paramètres
         function searchId($Nom) { 
             $query = "SELECT Id FROM Personne WHERE Prenom like :Nom or Nom like :Nom";
             $stmt = $this->connexion->prepare($query); 
@@ -208,6 +197,7 @@
             return $row[0]["Id"];
         } 
 
+// Fonction search_personne qui sélectionne toutes les données dans la base de données qu'a la personne qui a le nom ou le prénom qui contient les lettres passées en paramètres
         function search_personne($Nom) { 
             $query = "SELECT * FROM Personne WHERE Prenom like :Nom or Nom like :Nom";
             $stmt = $this->connexion->prepare($query); 
@@ -218,6 +208,7 @@
             return $row;
         } 
 
+// Fonction getPersonneHobby qui sélectionne les hobbies associés à une personne dont l'identifiant est passé en paramètre
         function getPersonneHobby($personneId){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -237,6 +228,7 @@
 
         }
 
+// Fonction getPersonneMusique qui sélectionne les types de musique associés à une personne dont l'identifiant est passé en paramètre
         function getPersonneMusique($personneId){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -256,6 +248,7 @@
 
         }
 
+// Fonction getRelationPersonne qui sélectionne les noms, prénoms et type de relation des personnes associées à une personne dont l'identifiant est passé en paramètre
         function getRelationPersonne($personneId){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -275,6 +268,7 @@
 
         }
 
+// Fonction getHobbyById qui sélectionne le hobby associé à l'identifiant passé en paramètre
         function getHobbyById($id){
             try{
                 $hobby_Id=$id;
@@ -294,6 +288,7 @@
             }
         }
 
+// Fonction getMusiqueById qui sélectionne le type de musique associé à l'identifiant passé en paramètre
         function getMusiquebyId($id){
             try{
                 $musique_Id=0;
@@ -313,6 +308,7 @@
             }
         }
 
+// Fonction getImage qui sélectionne l'url de l'image associée à l'identifiant passé en paramètre
         function getImage($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -331,6 +327,7 @@
             }
         }
 
+// Fonction getNom qui sélectionne le nom de la personne associée à l'identifiant passé en paramètre
         function getNom($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -349,6 +346,7 @@
             }
         }
 
+// Fonction getPrenom qui sélectionne le prénom de la personne associée à l'identifiant passé en paramètre
         function getPrenom($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -367,6 +365,7 @@
             }
         }
 
+// Fonction getDate qui sélectionne la date de naissance de la personne associée à l'identifiant passé en paramètre
         function getDate($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -385,6 +384,7 @@
             }
         }
 
+// Fonction getStatut qui sélectionne le statut d'état civil de la personne associée à l'identifiant passé en paramètre
         function getStatut($id){
             try{
                 $requete_prepare=$this->connexion->prepare(
@@ -403,6 +403,7 @@
             }
         }
 
+// Fonction getCompteId qui retourne le nombre d'identifiants total dans la base de données
         function getCompteId(){
             try{
                 $requete_prepare1=$this->connexion->prepare(
@@ -419,6 +420,7 @@
             }
         }
 
+// Fonction insertPersonneHobbies qui fait la relation entre une personne et ses hobbies dans la base de données
         function insertPersonneHobbies($personneId,$hobbies){
             try{
                 foreach($hobbies as $hobby){
@@ -437,6 +439,7 @@
 
         }
 
+// Fonction insertPersonneMusique qui fait la relation entre une personne et ses types de musique préférés dans la base de données
         function insertPersonneMusique($personneId,$musiques){
             try{
                 foreach($musiques as $music){
@@ -455,6 +458,7 @@
 
         }
 
+// Fonction insertPersonneRelation qui fait la relation entre une personne et ses amis déjà existants dans la base de données
         function insertPersonneRelation($personneId1,$personneId2,$type){
             try{
                 $requete_prepare=$this->connexion->prepare(

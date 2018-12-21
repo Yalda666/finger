@@ -1,4 +1,5 @@
 html, body {margin:0; padding:0}
+/* Style général du site ⇓⇓⇓ */
 body {
     background-image: url("/finger/image/forest.png");
     background-size: 100%;
@@ -10,6 +11,7 @@ body {
     color: #389130;
 
 }
+/* Définition du style particulier de nos div (Vous avez vu elles sont pas rectilignes!!! ⇓⇓⇓ */
 div{
     border-radius: 50%;
     width:50%;
@@ -24,12 +26,14 @@ div{
     box-shadow: 1px 6px 17px 10px #153913;
     border-width: 4px;
 }
+/* Les titres */
 h1 {
     font-size:300%;
     color:#389130;
     background-color:transparent;
     text-align:center;
 }
+/* Les deuxiemmes titres ⇓⇓⇓ */
 h2 {
     font-size:200%;
     color:#389130;
@@ -37,12 +41,14 @@ h2 {
     text-align:center;
     margin-bottom:20px;
 }
+/* Les titres en plus petit ⇓⇓⇓ */
 h3 {
     font-size:100%;
     color:#389130;
     background-color:transparent;
     text-align:center;
 }
+/* Style de nos paragraphes ⇓⇓⇓ */
 p {
     font-size:100%;
     color:#389130;
@@ -51,6 +57,7 @@ p {
     margin-left:0px;
     margin-right:0px;
 }
+/* Style de nos listes et mise en page générale ⇓⇓⇓ */
 li {
     font-size:100%;
     color:#389130;
@@ -59,24 +66,28 @@ li {
     margin-left:0px;
     margin-right:0px;
 }
+/* Style de nos liens ⇓⇓⇓ */
 a:link {
     font-size:100%;
     color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
+/* Style de nos liens après le click ⇓⇓⇓ */
 a:visited {
     font-size:100%;
     color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
+/* Style de nos lien au passage du curseur ⇓⇓⇓ */
 a:hover {
     font-size:100%;
     color:#389130;
     background-color:transparent;
     text-decoration:underline;
 }
+/* Style de nos tableaux ⇓⇓⇓ */
 table {
     border-color: transparent;
     border-style:solid;
@@ -84,6 +95,7 @@ table {
     text-align:center;
     width:100%;
 }
+/* Style particulier des TD de nos tableaux ⇓⇓⇓ */
 td {
     padding: 5%;
     font-size:100%;
@@ -96,7 +108,7 @@ td {
 }
 /*-------------------------------------------------------BER----------------------------------------------------------------------*/
 
-/* Formatte le texte des noms et prénoms de la page d'accueil */
+/* Formatte le texte des noms et prénoms de la page d'accueil ⇓⇓⇓ */
 p.np_home{
     border-width: 4px;
     text-shadow: 0px 0px 10px #24541C;
@@ -106,7 +118,7 @@ p.np_home{
     text-align: center;
 }
 
-/* Formatte le texte des noms et prénoms de la page profil */
+/* Formatte le texte des noms et prénoms de la page profil ⇓⇓⇓ */
 p.np_profil{
     border-width: 4px;
     text-shadow: 0px 0px 10px #24541C;
@@ -116,7 +128,7 @@ p.np_profil{
     text-align: center;
 }
 
-/*Table pour les photos dans la page d'accueil */
+/* Table pour les photos dans la page d'accueil ⇓⇓⇓ */
 table.photo_home {
     border-color:rgba(255, 255, 255, 0);
     border-style:solid;
@@ -128,7 +140,7 @@ table.photo_home {
     align-items:center;
 }
 
-/*Table pour les photos dans la page profil */
+/* Table pour les photos dans la page profil ⇓⇓⇓ */
 table.photo_profil {
     border-color:rgba(255, 255, 255, 0);
     border-style:solid;
@@ -141,7 +153,7 @@ table.photo_profil {
     
 }
 
-/* Table pour les inputs text des détails du profil */
+/* Table pour les inputs text des détails du profil ⇓⇓⇓ */
 table.input_name {
     border-color: rgba(255, 255, 255, 0);
     border-style: hidden;
@@ -153,36 +165,36 @@ table.input_name {
     margin-top:0px;
 }
 
-/* Colonne pour les textes des images de home */
+/* Colonne pour les textes des images de home ⇓⇓⇓ */
 td.tdhome {
     text-align:center;
     align-items:center;
 }
 
-/* Colonne pour les textes des images de profil */
+/* Colonne pour les textes des images de profil ⇓⇓⇓ */
 td.tdprofil {
     text-align:center;
     align-items:center;
     vertical-align: text-bottom;
 }
 
-/*Text input de la page création de profil*/
+/* Text input de la page création de profil ⇓⇓⇓ */
 .inputtext{
     width:60%;
 }
 
 
-/*Div simulant la place des photos dans la page d'accueil*/
+/* Div simulant la place des photos dans la page d'accueil ⇓⇓⇓ */
 .photo{
     height:300px;
-    display: table-cell; /* comportement visuel de cellule */
+    display: table-cell; /* comportement visuel de cellule ⇓⇓⇓ */
     vertical-align: middle;
     padding-top: 0px;
     padding-bottom: 0px;
     float:top;
 }
 
-/*Div pour les goûts dans la page creer_compte*/
+/* Div pour les goûts dans la page creer_compte ⇓⇓⇓ */
 .gout{
     display:inline-flex;
     justify-content:flex-start;
@@ -192,66 +204,65 @@ td.tdprofil {
     width:30%;
 }
 
-/* Centre la barre de recherches de la page home */
+/* Centre la barre de recherches de la page home ⇓⇓⇓ */
 #recherche{
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Définit la forme des boutons des pages ainsi que leur taille */
+/* Définit la forme des boutons des pages ainsi que leur taille ⇓⇓⇓ */
 button{
     border-radius: 50%;
     height:3em;
     font-size:20px;
 }
 
-/* Définit la couleur du champ required dans la page creer_compte */
+/* Définit la couleur du champ required dans la page creer_compte ⇓⇓⇓ */
 :required
 {
     background-color: #58C550;
 }
 
 /* ----------------------- SEB -----------------------------------------*/
-
+/* Photo de la page profil ⇓⇓⇓ */
 #topho{
     width: 33%;
     
     
 }
+/* Date de naissance ⇓⇓⇓ */
 #teda{
     width: 33%;
    
 }
+/* Prénom ⇓⇓⇓ */
 .nm{
     align-items: center;
     height: 100px;
 }
-#sonic{
-    width:50%;
-    box-align: center;
-    margin: auto;
-    text-align: center;
-    border: transparent;
-
-}
+/* Classe de notre image de maison champignon ⇓⇓⇓ */
 .imghome{
     width: 200px;
     float: left;
 }
+/* Particularité de l'image home qui reste toujours au même endroit ⇓⇓⇓ */
 #home{
     position: fixed;
     top: 0;
     left: 0;
 }
+/* Propriété pour l'affichage des musiques et des hobbies dans une div dans la div ⇓⇓⇓ */
 .flxbx{
     display: inline-flex;
 }
+/* Ma super div qui me sert à cacher le style des div que je veux pas voir mais qui sont utile par leur présence ⇓⇓⇓ */
 .divInvisib{
     border-style: none;
     -webkit-box-shadow: none; 
     box-shadow: none;
     background-color: transparent;
 }
+/* Style arrondi de certaines images ⇓⇓⇓ */
 .imgmerdique{
     border-radius: 50%;
     border-style: solid;
@@ -259,17 +270,18 @@ button{
     width:200px; 
     border-width: 4px;
 }
+/* Classe spéciale de la musqiue ⇓⇓⇓ */
 .muse{
     text-align: center;
 }
-
+/* Style des imputs ⇓⇓⇓ */
 #submit_chrch{
     color: #389130;
     background-color: #153913;
     border-color: white;
     font-family: 'Barrio';font-size: 22px;
 }
-
+/* Style des imputs 2 ⇓⇓⇓ */
 #submit_creer{
     margin-left:42.5%;
     margin-right:auto;

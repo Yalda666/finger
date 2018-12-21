@@ -95,7 +95,6 @@
         <h2>Relations sociales</h2>
         <h3>(pour ceux qui en ont de réelles...)</h3>
     
-
 <!-- Début php pour populer la liste des personnes avec qui se connecter -->
 <?php
 error_reporting(0);
