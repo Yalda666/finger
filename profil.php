@@ -1,4 +1,6 @@
 <?php
+
+// Connexion à la base de données ↓↓↓
 error_reporting(0);
 require 'connexion.php';
 $appliBD= new Connexion();
@@ -13,20 +15,24 @@ else{
 }
 $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
 ?>
-
+<!-- Début du HTML ↓↓↓ -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Définition de l'id afin d'afficher le profil de la bonne personne ↓↓↓ -->
     <title>Profil de:<?= $nomcomplet ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Lien avec la feuille CSS pour le style ↓↓↓ -->
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+<!-- Notre police d'écriture si jolie et si spéciale trouvée sur google ↓↓↓ -->
   <link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'>
 </head>
 
 <body> 
+<!-- Notre belle image de maison champignon qui nous dirige vers la page "Home" ↓↓↓  --> 
     <a href="home.php" id="home"><img class="imghome" src="image/home.png" alt="Maison champignon"></a>
     <div>
         <h1>
@@ -37,6 +43,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
     <table>     
         <tr>
             <?php
+// Reception de l'id pour afficher la photo ↓↓↓
                 if(!is_null($_POST["id"])){
                     $lien= $appliBD->getImage($_POST["id"]);
                     echo '<td rowspan="2" id="topho"><div class="divInvisib"><img class="imgmerdique" src="'.$lien.'" alt="L" style="width:100%"></div></td>';
@@ -44,6 +51,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                 else{
                     echo '<td rowspan="2" id="topho"><div class="divInvisib"><img class="imgmerdique" src="'.$_POST["lien"].'" alt="L" style="width:100%"></div></td>';
                 }
+// Reception de l'ID personne pour afficher le Nom ↓↓↓
                 if(!is_null($_POST["id"])){
                     $nom= $appliBD->getNom($_POST["id"]);
                     echo '<td class="nm"><div>'.$nom.'</div></td>';
@@ -51,6 +59,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                 else{
                     echo '<td class="nm"><div>'.$_POST["nom"].'</div></td>';
                 }
+// Reception de l'ID personne pour afficher la date de naissance et transformation de celle-ci ↓↓↓
                 if(!is_null($_POST["id"])){
                     $date= $appliBD->getDate($_POST["id"]);
                     echo '<td rowspan="2" id="teda"><div>'.$appliBD->inverseDate($date).'</div></td>';
@@ -63,6 +72,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
         </tr>
         <tr>
             <?php
+// Reception de l'ID pour afficher le Prénom ↓↓↓
                 if(!is_null($_POST["id"])){
                     $prenom= $appliBD->getPrenom($_POST["id"]);
                     echo '<td class="nm"><div>'.$prenom.'</div></td>';
@@ -80,6 +90,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
     <div>
         <h2 id="stts">
         <?php
+// Capture du statut afin de l'afficher vu que c'était important pour vous ↓↓↓
             if(!is_null($_POST["id"])){
                 $etat= $appliBD->getStatut($_POST["id"]);
                 echo '<td class="nm"><div>'.$etat.'</div></td>';
@@ -98,16 +109,15 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
         <div>
             <ul class="muse">
             <?php 
+// Pareil qu'en haut pour la musique ↓↓↓
                 if(!is_null($_POST["id"])){
                     $musique= $appliBD->getPersonneMusique($_POST["id"]);
                     foreach ($musique as $music){
-
                         echo '<li>'.$music["Type"].'</li>';
                     }
                 }
                 else{
                     foreach ($_POST["metal"] as $music){
-
                         echo '<li>'.$appliBD->getMusiquebyId($music).'</li>';
                     }
                 }
@@ -125,6 +135,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
         <div>
             <ul class="muse">
             <?php 
+// Pareil qu'en haut pour les hobbies ↓↓↓
                 if(!is_null($_POST["id"])){
                     $hobbies= $appliBD->getPersonneHobby($_POST["id"]);
                     foreach ($hobbies as $hobby){
@@ -133,7 +144,6 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
                 }
                 else{
                     foreach ($_POST["jouer"] as $hobby){
-
                         echo '<li>'.$appliBD->getHobbyById($hobby).'</li>';
                     }
                 }
@@ -146,6 +156,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
         <table class="photo_profil">
             <tr>
                 <?php
+// Pareil qu'en haut pour les relations mais avec la boucle pour les afficher toutes ↓↓
                 if(!is_null($_POST["id"])){
                     $relations=$appliBD->getRelationPersonne($_POST["id"]);
                     $count=1;
@@ -211,12 +222,7 @@ $nomcomplet=$appliBD->getNom($id).", ".$appliBD->getPrenom($id);
 </body>
 </html>
 <?php
-
-
-
-
-
-
+// Fonction inscription pour récupérer toutes les informations entrées dans "Créer Compte" ↓↓
 function inscription(){
     $count=1;
     $appliBD=new Connexion;

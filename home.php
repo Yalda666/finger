@@ -3,7 +3,7 @@
 require('connexion.php');
 error_reporting(0);
 
-// Début du html
+// Début du html header et body, barre de recherche créée et renvoie la chaîne de caractères entrée en POST à la même page pour afficher les bons résultats
 echo <<<MON_HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -36,25 +36,32 @@ echo <<<MON_HTML
 MON_HTML;
 
 
-
+// Si le $POST est nul ou si on a recherché aucune chaîne de caractères on popule la page grâce à la fonction population
 if(is_null($_POST) || $_POST["recherche"]==""){
     population();
 }
+// Si le $POST n'est pas nul ou si on a recherché une chaîne de caractères on popule la page grâce à la fonction search_personne qui renverra le bon tableau de personnes recherchées
 if(!is_null($_POST["recherche"]) && $_POST["recherche"]!==""){
     $appliBD=new Connexion;
     $ids=$appliBD->search_personne($_POST["recherche"]);
+// Début tableau
     echo '
         <table class="photo_home">
         
     ';
+// Compteur j pour formater le tableau de sorte à ce qu'il n'y ait que 3 personnes affichées par ligne
     $j=1;
+// Début du parcours du tableau d'ids retourné par la fonction search_personne
     foreach($ids as $i){
+// récupération de l'url de la photo, du nom et du prénom
         $lien=$i["URL_Photo"];
         $nom=$i["Nom"];
         $prenom=$i["Prenom"];
+// formatage tableau tous les 3 affichages
         if(($j-1)%3==0){
             echo'<tr>';
         }
+// Affichage de la photo, du nom et du prénom de la personne dans une div invisible avec un input invisible afin de pouvoir cliquer sur l'image pour afficher le profil
         echo '
                     <form action="profil.php" method="post">
                     <td class="tdhome">
@@ -71,6 +78,7 @@ if(!is_null($_POST["recherche"]) && $_POST["recherche"]!==""){
         }
         $j++;
     }
+// Fin de la table et affichage du bouton pour créer un compte
     echo '
     </table>
     <div>
@@ -79,6 +87,7 @@ if(!is_null($_POST["recherche"]) && $_POST["recherche"]!==""){
     ';
 }
 
+// Fonction population qui peuple l'affichage de la page avec les photos, les noms et les prénoms des personnes contenues dans la base de données
 function population(){
     $appliBD=new Connexion;
     $newId=$appliBD->getCompteId();
