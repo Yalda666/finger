@@ -1,7 +1,9 @@
 <?php
+// Inclusion du fichier connexion et suppression de l'affichage des erreurs pour enlever les notifications d'index manquants dans le post
 require('connexion.php');
 error_reporting(0);
 
+// Début du html
 echo <<<MON_HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +24,7 @@ echo <<<MON_HTML
         <form action="home.php" method="post">
         <input type=text id=recherche name=recherche placeholder="Veuillez taper votre recherche de profils ici" autofocus>
         <br>
-        <input type="submit" value="Rechercher" style=font-size:150%;border-radius:45%;height:3em;>
+        <input id="submit_chrch" type="submit" value="Rechercher" style=font-size:150%;border-radius:45%;height:3em;>
         </form>
     </div>
    
